@@ -4,7 +4,9 @@ const path = require('path');
 const db = require('./db');
 
 const app = express();
-const PORT = 3000;
+
+// ✅ Use Railway's port when deployed
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,5 +27,5 @@ app.post('/submit', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`✅ Server running on port ${PORT}`);
 });
